@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node start.js",
-    "dev": "set PORT=3002 && nodemon start.js",
+    "dev": "set PORT=3001 && nodemon start.js",
     "prd": "pm2 start start.js --watch",
     "pm2stop": "pm2 stop start.js",
     "test": "echo \"Error: no test specified\" && exit 1",
