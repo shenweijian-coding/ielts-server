@@ -6,6 +6,8 @@ const ObjectId = mongoose.Types.ObjectId
 
 /**
  * 
+ * 
+ * db.createCollection('books')  
 {
   id: 1,
   name: '托福红宝书',
@@ -24,6 +26,7 @@ module.exports = model;
 
 /**
  * 
+ * 
  * db.books.insert({  
     "id": "1",  
     "name": "托福红宝书",  
@@ -33,23 +36,15 @@ module.exports = model;
       "2-1",
     ]  
   })
+db.books.insert({  
+    "id": "2",  
+    "name": "雅思语料库",  
+    "chapters": [  
+      "1-1",  
+      "2-1",
+    ]  
+  })
 
-  db.chapters.insert({  
-  "_id": "chapter_id",  
-  "name": "Chapter Name",  
-  "bookId": "book_id", // 与书籍集合中的书籍标识符对应  
-  "words": [  
-    {  
-      "word": "Word1",  
-      "translation": "Translation1"  
-    },  
-    {  
-      "word": "Word2",  
-      "translation": "Translation2"  
-    },  
-    // ... 更多单词和翻译对  
-  ]  
-})
 
 db.chapters.find({   
   bookId: 'book_id',   
