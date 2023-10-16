@@ -17,7 +17,12 @@ class UsersController extends BaseController {
       ctx.fail(0, '账号密码不匹配，请重新输入！')
       return
     }
-    ctx.success('success')
+    ctx.success(userInfo)
+  }
+  // 保存用户的听写配置
+  static async saveConfig(ctx) {
+    const {  } = ctx.request.body
+    
   }
   static getUserInfo(ctx) {
     ctx.success({ info: 111 })

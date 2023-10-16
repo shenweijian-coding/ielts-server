@@ -55,3 +55,23 @@ db.chapters.find({
   console.log(word.word + ': ' + word.translation);   
 })
  */
+
+/**
+ * db.chapters.aggregate([  
+  { $unwind: "$words" },  
+  {  
+    $lookup: {  
+      from: "spelling_records",  
+      localField: "words.word",  
+      foreignField: "word",  
+      as: "spelling_records"  
+    }  
+  },  
+  {  
+    $group: {  
+      _id: { name: "$name", bookId: "$bookId" },  
+      words: { $push: { word: "$words.word", zh: "$words.zh", err_total: "$spelling_records.err_total" } }  
+    }  
+  }  
+])
+ */
