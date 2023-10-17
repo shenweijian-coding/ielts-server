@@ -21,8 +21,16 @@ class UsersController extends BaseController {
   }
   // 保存用户的听写配置
   static async saveConfig(ctx) {
-    const {  } = ctx.request.body
-    
+    const { authorization } = ctx.request.headers
+    const { speed, interval, repeat, pronounce, mode } = ctx.request.body
+    await user.updateOne({ _id: authorization }, {
+      $set: {
+        config: {
+          speed, interval, repeat, pronounce, mode
+        }
+      }
+    })
+    ctx.success('设置成功')
   }
   static getUserInfo(ctx) {
     ctx.success({ info: 111 })
