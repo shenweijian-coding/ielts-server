@@ -32,8 +32,14 @@ class UsersController extends BaseController {
     })
     ctx.success('设置成功')
   }
-  static getUserInfo(ctx) {
-    ctx.success({ info: 111 })
+  static async getUserInfo(ctx) {
+    const { authorization } = ctx.request.headers
+    if(!authorization) {
+      ctx.fail(0, '未登录')
+      return
+    }
+    const userInfo = await user.findOne({ _id: authorization }, { pwd: 0 })
+    ctx.success(userInfo)
   }
 }
 
